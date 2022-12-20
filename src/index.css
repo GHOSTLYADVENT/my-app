@@ -1,13 +1,267 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 80%;
+    scroll-behavior: smooth;
+    overflow: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 4rem;
+    background-color: #333;
+}
+
+.flex {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    background-color: #333;
+    padding: 0 1rem;
+}
+
+.flex h3 .App-logo{
+    color: rgb(204, 215, 204);
+}
+
+.flex-ul {
+    display: flex;
+    gap: 6rem;
+    list-style-type: none;
+}
+
+.flex-ul li {
+    cursor: pointer;
+    color: rgb(204, 215, 204);
+}
+
+.flex-ul li:hover {
+    color: #61dafb;
+}
+
+.logo-brand {
+    color: #ccc;
+    font-size: large;
+    font-weight: 800;
+}
+
+.dropdown {
+    margin: 0 rem;
+    color: #ccc;
+    font-size: 1.7rem;
+    list-style-type: none;
+    position: relative;
+    /* right: 10px; */
+    z-index: 1000;
+}
+
+.dropdown select {
+    outline: none;
+    background: transparent;
+    border: none;
+    color: #ccc;
+}
+
+.dropdown select:checked {
+    outline: 0;
+    border: none;
+}
+
+.flex-li {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-ul .a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 1.3rem;
+}
+
+.flex-li-a:hover, .flex-ul-li .a:hover {
+    animation: dropdown 0.3s ease-out linear;
+}
+
+@keyframes dropdown {
+    0% {
+        transform: scale(0); transform: translateX(0%);
+    }
+    100% {
+        transform: scale(1); transform: translateX(-10%);
+    }
+}
+
+/* Rotate logo for 15s */
+.flex h3 {
+    animation: roll 15s ease-out infinite;
+}
+
+@keyframes roll {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.flex-li-a {
+    text-decoration: none;
+    color: #ccc;
+    padding:  0.29rem 0;
+}
+
+.flex-li::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: -100%;
+    transition: all .3s ease-out;
+}
+
+.flex-li::after:hover {
+    background-color: #61dafb;
+}
+
+.flex-li-a:hover {
+    color: #61dafb;
+    font-size: 1rem;
+}
+
+.flex-ul-li::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: -100%;
+    transition: all .3s ease-out;
+}
+
+.flex-ul-li::after:hover {
+    background-color: #61dafb;
+}
+
+/* QUERIES */
+@media (max-width: 529px) {
+.flex ul {
+    display: none;
+    transition: none;
+}
+
+.flex-ul .a {
+    display: none;
+}
+}
+
+/* MEDIA: 400 */
+@media (min-width: 400px) {
+    
+}
+
+/* Queries SLides */
+@media screen and (max-width: 700px){
+    .slide-container {
+    margin: auto;
+    padding: 0;
+    width: 100%;
+}
+}
+
+@media screen and (max-width: 400px){
+.slide-container {
+    width: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+}
+
+.container-dots {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    gap: 0.3em;
+    position: absolute;
+    top: 92%;
+    left: 0;
+    z-index: 1;
+}
+
+.dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: rgb(219, 237, 14);
+}
+}
+
+/* REACT SLIDESHOW */
+.slide-container {
+    margin: auto;
+    padding: 0;
+    width: 90%;
+}
+
+.slide {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    overflow-x: none;
+    transition: opacity ease-in-out 0.65s;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.active-anim {
+    opacity: 1;
+}
+
+.container-dots {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    gap: 0.9em;
+    position:absolute;
+    top: 92%;
+    left: 30%;
+    z-index: 1;
+}
+
+.dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: rgb(219, 237, 14);
+}
+
+.dot.active {
+    background: transparent;
+    border: 2px solid yellow;
+}
+
+/* Custom Bars */
+.bars {
+    height: 2px;
+    width: 4px;
+    background-color: #fff;
 }
